@@ -1,22 +1,219 @@
+:root {
+  --blue-color: #464c58;
+  --parchment-color: #d6cca9;
+}
+
+@font-face {
+  font-family: "game_of_thronesregular";
+  src: url("./assets/fonts/game_of_thrones-webfont.woff2") format("woff2"),
+    url("./assets/fonts/game_of_thrones-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "masonregular";
+  src: url("./assets/fonts/mason_regular-webfont.woff2") format("woff2"),
+    url("./assets/fonts/mason_regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-image: url("./assets/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  scroll-behavior: smooth;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  font-variant: small-caps;
+  color: white;
+  font-family: "masonregular";
+  /* font-family: "game_of_thronesregular"; */
+}
+
+nav {
+  background-color: var(--blue-color);
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  flex: 0.45;
+  color: white;
+  font-size: 1.2em;
+  box-shadow: 15px 10px 40px #414141;
+  border-radius: 0 0 5px 5px;
+  /* position: sticky; */
+  /* top: -10; */
+}
+
+.navLeft {
+  display: flex;
+  /* flex: .1; */
+  /* width: 50%; */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  /* position: sticky; */
+  /* top: 0; */
+}
+
+.active {
+  font-size: 1.2em;
+  color: white;
+  text-decoration: overline;
+}
+
+a {
+  color: #9b9b9b;
+  text-decoration: none;
+  margin: 2%;
+}
+
+.navLeft a:hover {
+  cursor: pointer;
+}
+
+.navRight {
+  flex: 0.8;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  margin-top: 5%;
+}
+
+.character-create {
+  background-color: var(--blue-color);
+  color: white;
+  border: 1px solid white;
+  margin: 4% 10%;
+  padding: 3%;
+  display: flex;
+  flex: 0.5;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.character-create form {
+  width: 100%;
+}
+
+.character-create input {
+  margin: 5% 0;
+  width: 90%;
+  padding: 2%;
+  font-size: 1em;
+}
+
+main a {
+  font-size: 1.3em;
+  color: white;
+  text-decoration: overline;
+  /* text-decoration: underline; */
+}
+
+.avatar-create {
+  background-color: var(--blue-color);
+  border: 1px solid white;
+  margin: 5% 7%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.avatar-create-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-create a {
+  font-size: 1.1em;
+}
+
+.avatar-create input[type=text] {
+  font-size: 1em;
+}
+
+.radio-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+select {
+  color: black;
+  background-color: white;
+  margin: 3%;
+  padding: 1%;
+  font-size: 1em;
+}
+
+.character-display {
+  background-color: var(--blue-color);
+  margin: 5% 10%;
+  padding: 2%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-size: 1.2em;
+  text-align: center;
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.character-display:first-child {
+  margin-top: 0;
+}
+
+.character-display li {
+  list-style-type: none;
+}
+
+.character-display strong {
+  color: rgb(170, 170, 170);
+}
+
+footer {
+  background-color: var(--blue-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0.5;
+  font-size: 1.2em;
+  box-shadow: 5px 0px 15px #414141;
+}
+
+footer > * {
+  margin: 1% 0;
+}
+
+.footerL {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  padding: 2%;
+  font-size: 1.3em;
+}
+
+@media (min-width: 1024px) {
+  body {
+    background-image: url("./assets/background2.png");
+    background-size: stretch;
+    background-repeat: no-repeat;
+  }
 }
