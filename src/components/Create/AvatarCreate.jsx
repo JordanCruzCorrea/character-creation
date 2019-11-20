@@ -174,8 +174,8 @@ export class AvatarCreate extends React.Component {
     console.log(e.target.value);
     this.setState({
       avatarName: e.target.value
-    })
-    this.displayAvatar()
+    });
+    this.displayAvatar();
   }
 
   async componentDidMount() {
@@ -200,95 +200,97 @@ export class AvatarCreate extends React.Component {
             />
             <label htmlFor="avatar-transparent">Transparent</label>
           </div>
-        </div>
-        <div className="avatar-image">
           <img src={this.state.avatar} alt="" />
         </div>
-        <input
-          type="text"
-          name="avatar-name"
-          id="avatar-name"
-          placeholder="Avatar Name (no personal info pls)"
-          onChange={this.setAvatarName}
-        />
-        {/* <button onClick={this.setAvatarName} value="SUBMIT">SUBMIT</button> */}
-        <select name="top" id="av-top">
-          {this.state.top.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="accessories" id="av-accessories">
-          {this.state.accessories.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="hat-color" id="av-hat-color">
-          {this.state.hatColor.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="facial-hair" id="av-facial-hair">
-          {this.state.facialHair.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="facial-hair-color" id="av-facial-hair-color">
-          {this.state.facialHairColor.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="clothes" id="av-clothes">
-          {this.state.clothes.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="fabric-color" id="av-fabric-color">
-          {this.state.fabricColor.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="eyes" id="av-eyes">
-          {this.state.eyes.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="eyebrow" id="av-eyebrow">
-          {this.state.eyebrow.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="mouth" id="av-mouth">
-          {this.state.mouth.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <select name="skin" id="av-skin">
-          {this.state.skin.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        {/* <div className="avatar-image">
+        </div> */}
+        <div className="avatar-options">
+          <input
+            type="text"
+            name="avatar-name"
+            id="avatar-name"
+            placeholder="Avatar Name (no personal info pls)"
+            onChange={this.setAvatarName}
+          />
+          {/* <button onClick={this.setAvatarName} value="SUBMIT">SUBMIT</button> */}
+          <select name="top" id="av-top">
+            {this.state.top.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="accessories" id="av-accessories">
+            {this.state.accessories.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="hat-color" id="av-hat-color">
+            {this.state.hatColor.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="facial-hair" id="av-facial-hair">
+            {this.state.facialHair.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="facial-hair-color" id="av-facial-hair-color">
+            {this.state.facialHairColor.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="clothes" id="av-clothes">
+            {this.state.clothes.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="fabric-color" id="av-fabric-color">
+            {this.state.fabricColor.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="eyes" id="av-eyes">
+            {this.state.eyes.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="eyebrow" id="av-eyebrow">
+            {this.state.eyebrow.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="mouth" id="av-mouth">
+            {this.state.mouth.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select name="skin" id="av-skin">
+            {this.state.skin.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
     );
   }

@@ -30,7 +30,7 @@ export class Browse extends React.Component {
               {character.map((char, index) => {
                 return (
                   <div key={index} className="character-display">
-                    <img width="30%" src={char.avatar} alt="" />
+                    <img src={char.avatar} alt="" />
                     <h3 key={index}>{char.name}</h3>
                     <span>
                       <strong>Born:</strong> {char.born}
