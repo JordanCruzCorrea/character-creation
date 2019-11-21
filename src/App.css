@@ -35,12 +35,13 @@ body {
   height: 100vh;
   font-variant: small-caps;
   color: white;
-  font-family: "masonregular";
+  font-family: "game_of_thronesregular";
   /* font-family: "game_of_thronesregular"; */
 }
 
 nav {
   background-color: var(--blue-color);
+  font-family: "game_of_thronesregular";
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -90,6 +91,7 @@ main {
   flex-direction: column;
   flex: 3;
   margin-top: 5%;
+  font-family: "masonregular";
 }
 
 .character-create {
@@ -99,7 +101,7 @@ main {
   margin: 4% 10%;
   padding: 3%;
   display: flex;
-  flex: 0.5;
+  flex: .8;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
@@ -108,10 +110,13 @@ main {
 
 .character-create form {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .character-create input {
-  margin: 5% 0;
+  margin: 2% 0;
   width: 90%;
   padding: 2%;
   font-size: 1em;
@@ -132,6 +137,10 @@ main a {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  height: auto;
+  flex: .9;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatar-create-left {
@@ -168,7 +177,7 @@ select {
 
 .character-display {
   background-color: var(--blue-color);
-  margin: 5% 10%;
+  /* margin: 5% 10%; */
   padding: 2%;
   display: flex;
   flex-flow: column nowrap;
@@ -185,8 +194,9 @@ select {
   width: 40%;
 }
 
-.character-display:first-child {
-  margin-top: 0;
+.character-display span > * {
+  display: flex;
+  flex-direction: column;
 }
 
 .character-display li {
@@ -199,6 +209,7 @@ select {
 
 footer {
   background-color: var(--blue-color);
+  font-family: "game_of_thronesregular";
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -235,6 +246,13 @@ footer > * {
 }
 
 @media (min-width: 1024px) {
+  body {
+    background-image: url("./assets/background2.png");
+    background-size: stretch;
+    background-repeat: no-repeat;
+    font-size: 1em;
+  }
+
   nav {
     position: fixed;
     width: 100%;
@@ -248,11 +266,9 @@ footer > * {
     order: -1;
   }
 
-  body {
-    background-image: url("./assets/background2.png");
-    background-size: stretch;
-    background-repeat: no-repeat;
-    font-size: 1.5em;
+  .navRight {
+    margin-right: 5%;
+    text-align: right;
   }
 
   main {
@@ -260,15 +276,17 @@ footer > * {
     justify-content: flex-start;
     align-items: center;
     flex: 2;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     margin: 0;
     /* margin: 0 3%; */
   }
-  
+
   .container {
     display: flex;
-    flex: 2;
-    margin: 5% 0;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    /* margin: 0 auto; */
   }
 
   .character-create {
@@ -290,15 +308,15 @@ footer > * {
   }
 
   .avatar-create {
-    margin: 25% 5%;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    height: auto;
   }
 
   .avatar-create-left {
     justify-content: space-between;
-    flex: .7;
+    flex: 0.7;
   }
 
   .avatar-create-left img {
@@ -326,32 +344,35 @@ footer > * {
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    flex: .5;
+    flex: 0.5;
   }
 
   .avatar-options select {
     width: 100%;
   }
 
-  .character-display:first-child {
-    /* margin-top: 0; */
-    /* margin-top: 15%; */
+  .character-container {
+    display: flex;
+    flex: 1;
+    /* margin: 5% auto; */
+    flex-wrap: wrap;
   }
 
   .character-display {
-    margin: 20% 2%;
-    flex: 2;
+    margin: 8% 1%;
+    flex: .5;
     width: 100%;
+    height: auto;
     align-items: center;
     justify-content: center;
   }
 
   footer {
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     flex-direction: row;
     flex: 0.3;
-    bottom: 0;
+    /* bottom: 0; */
   }
 }
 

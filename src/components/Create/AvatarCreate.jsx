@@ -1,53 +1,67 @@
+// import React from "react";
 import React from "react";
+
 import { NavLink } from "react-router-dom";
-import Axios from "axios";
+// import Axios from "axios";
 // import { displayAvatar } from "../../services/api";
 
 export class AvatarCreate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      avatar: "",
-      avatarName: "name",
-      value: "select",
+      avatar: "https://avataaars.io/?",
+      // avatarName: "http://avatars.dicebear.com/v2/avataaars/hello.svg",
+      // initialOption: '?options',
+      options: [],
+      topValue: "",
+      accessoriesValue: "",
+      hatColorValue: "",
+      facialHairValue: "",
+      facialHairColorValue: "",
+      clothesValue: "",
+      fabricColorValue: "",
+      eyesValue: "",
+      eyebrowValue: "",
+      mouthValue: "",
+      skinValue: "",
       top: [
-        "No Hair",
+        "NoHair",
         "Eyepatch",
         "Hijab",
-        "Winter Hat 1",
-        "Winter Hat 2",
-        "Winter Hat 4",
-        "Long Hair Big Hair",
-        "Long Hair Bob",
-        "Long Hair Curly",
-        "Long Hair Curvy",
-        "Long Hair Dreads",
-        "Long Hair Frida",
-        "Long Hair Fro",
-        "Long Hair Fro Band",
-        "Long Hair Not Too Long",
-        "Long Hair Shaved Sides",
-        "Long Hair Mia Wallace",
-        "Long Hair Straight",
-        "Long Hair Straight 2",
-        "Long Hair Straight Strand",
-        "Short Hair Dreads 01",
-        "Short Hair Dreads 02",
-        "Short Hair Frizzle",
-        "Short Hair Shaggy Mullet",
-        "Short Hair Short Curly",
-        "Short Hair Short Flat",
-        "Short Hair Short Round",
-        "Short Hair Short Waved",
-        "Short Hair Sides",
-        "Short Hair The Caesar",
-        "Short Hair The Caesar Side Part"
+        "WinterHat1",
+        "WinterHat2",
+        "WinterHat4",
+        "LongHairBig Hair",
+        "LongHairBob",
+        "LongHairCurly",
+        "LongHairCurvy",
+        "LongHairDreads",
+        "LongHairFrida",
+        "LongHairFro",
+        "LongHairFroBand",
+        "LongHairNotTooLong",
+        "LongHairShavedSides",
+        "LongHairMiaWallace",
+        "LongHairStraight",
+        "LongHairStraight2",
+        "LongHairStraightStrand",
+        "ShortHairDreads01",
+        "ShortHairDreads02",
+        "ShortHairFrizzle",
+        "ShortHairShaggyMullet",
+        "ShortHairShortCurly",
+        "ShortHairShortFlat",
+        "ShortHairShortRound",
+        "ShortHairShortWaved",
+        "ShortHairSides",
+        "ShortHairTheCaesar",
+        "ShortHairTheCaesarSidePart"
       ],
       accessories: [
         "Blank",
         "Kurt",
-        "Prescription 01",
-        "Prescription 02",
+        "Prescription01",
+        "Prescription02",
         "Sunglasses",
         "Wayfarers"
       ],
@@ -63,45 +77,45 @@ export class AvatarCreate extends React.Component {
       ],
       facialHair: [
         "Blank",
-        "Beard Medium",
-        "Beard Light",
-        "Beard Magestic",
-        "Moustache Fancy",
-        "Moustache Magnum"
+        "BeardMedium",
+        "BeardLight",
+        "BeardMagestic",
+        "MoustacheFancy",
+        "MoustacheMagnum"
       ],
       facialHairColor: [
         "Auburn",
         "Black",
         "Blonde",
-        "Blonde Golden",
+        "BlondeGolden",
         "Brown",
-        "Brown Dark",
+        "BrownDark",
         "Platinum",
         "Red"
       ],
       clothes: [
-        "Blazer Shirt",
-        "Blazer Sweater",
-        "Collar Sweater",
-        "Graphic Shirt",
+        "BlazerShirt",
+        "BlazerSweater",
+        "CollarSweater",
+        "GraphicShirt",
         "Overall",
-        "Shirt Crew Neck",
-        "Shirt Scoop Neck",
-        "Shirt VNeck"
+        "ShirtCrewNeck",
+        "ShirtScoopNeck",
+        "ShirtVNeck"
       ],
       fabricColor: [
         "Black",
-        "Blue 01",
-        "Blue 02",
-        "Blue 03",
-        "Gray 01",
-        "Gray 02",
+        "Blue01",
+        "Blue02",
+        "Blue03",
+        "Gray01",
+        "Gray02",
         "Heather",
-        "Pastel Blue",
-        "Pastel Green",
-        "Pastel Orange",
-        "Pastel Red",
-        "Pastel Yellow",
+        "PastelBlue",
+        "PastelGreen",
+        "PastelOrange",
+        "PastelRed",
+        "PastelYellow",
         "Pink",
         "Red",
         "White"
@@ -111,28 +125,28 @@ export class AvatarCreate extends React.Component {
         "Cry",
         "Default",
         "Dizzy",
-        "Eye Roll",
+        "EyeRoll",
         "Happy",
         "Hearts",
         "Side",
         "Squint",
         "Surprised",
         "Wink",
-        "Wink Wacky"
+        "WinkWacky"
       ],
       eyebrow: [
         "Angry",
-        "Angry Natural",
+        "AngryNatural",
         "Default",
-        "Default Natural",
-        "Flat Natural",
-        "Raised Excited",
-        "Raised Excited Natural",
-        "Sad Concerned",
-        "Sad Concerned Natural",
-        "Unibrow Natural",
-        "Up Down",
-        "Up Down Natural"
+        "DefaultNatural",
+        "FlatNatural",
+        "RaisedExcited",
+        "RaisedExcited Natural",
+        "SadConcerned",
+        "SadConcernedNatural",
+        "UnibrowNatural",
+        "UpDown",
+        "UpDownNatural"
       ],
       mouth: [
         "Concerned",
@@ -141,55 +155,95 @@ export class AvatarCreate extends React.Component {
         "Eating",
         "Grimace",
         "Sad",
-        "Scream Open",
+        "ScreamOpen",
         "Serious",
         "Smile",
         "Tongue",
         "Twinkle",
         "Vomit"
       ],
-      skin: [
-        "Tanned",
-        "Yellow",
-        "Pale",
-        "Light",
-        "Brown",
-        "Dark Brown",
-        "Black"
-      ]
+      skin: ["Tanned", "Yellow", "Pale", "Light", "Brown", "DarkBrown", "Black"]
     };
 
-    this.setAvatarName = this.setAvatarName.bind(this);
+    // this.setAvatarName = this.setAvatarName.bind(this);
+    this.updateAvatar = this.updateAvatar.bind(this);
+    this.displayAvatar = this.displayAvatar.bind(this);
   }
 
-  async displayAvatar() {
-    const avatar = await Axios.get(
-      `http://avatars.dicebear.com/v2/avataaars/${this.state.avatarName}.svg`
-    );
+  // https://avataaars.io/?avatarStyle=Transparent&topType=NoHair&accessoriesType=Sunglasses&facialHairType=Blank&clotheType=BlazerSweater&eyeType=Dizzy&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Black
 
-    this.setState({ avatar: avatar.config.url });
+  displayAvatar() {
+    // const avatar =
+    // `http://avatars.dicebear.com/v2/avataaars/${this.state.avatarName}.svg?options`
+    // `https://avataaars.io/?`;
+    // );
+    this.setState({ avatar: this.state.avatar + this.state.options });
+    // this.setState({ avatar: this.state.avatar + this.state.options });
   }
 
-  setAvatarName(e) {
-    console.log(e.target.value);
+  // setAvatarName(e) {
+  //   console.log(e.target.value);
+  //   this.setState({
+  //     avatarName: e.target.value
+  //   });
+  //   this.displayAvatar();
+  // }
+
+  componentDidMount() {
+    this.displayAvatar();
+  }
+
+  // ?options[top][]=turban&options[hatColor][]=black
+
+  updateAvatar(e) {
+    // const opt = e.target.value;
     this.setState({
-      avatarName: e.target.value
+      value: e.target.value,
+      options: this.state.options + `${e.target.name}=${e.target.value}&`
+      // avatar: this.state.avatar + this.state.options
+      // options: [
+      //   ...this.state.options,
+      //   `${e.target.name}=${e.target.value}`
+      // ],
+      // avatar: this.state.avatar + this.state.options
     });
-    this.displayAvatar();
-  }
+    // this.state.options.join('')
+    // console.log(this.state.avatar);
+    // console.log(this.state.options);
+    // console.log("e.target.name", e.target.name);
+    // console.log("e.target.value", e.target.value);
 
-  async componentDidMount() {
+    console.log("state of value: ", this.state.value);
+    console.log("options: ", this.state.options);
     this.displayAvatar();
+    console.log('displayAvatar fired')
   }
 
   render() {
     return (
       <div className="avatar-create">
+        {/* https://avataaars.io/?
+        avatarStyle=Circle
+        &topType=LongHairStraight
+        &accessoriesType=Prescription01
+        &hatColor=Blue01
+        &hairColor=Red
+        &facialHairType=MoustacheFancy
+        &facialHairColor=Platinum
+        &clotheType=CollarSweater
+        &clotheColor=PastelGreen
+        &eyeType=WinkWacky
+        &eyebrowType=SadConcernedNatural
+        &mouthType=Eating
+        &skinColor=Light */}
+
         <div className="avatar-create-left">
+          {/* <span> */}
           <NavLink exact to="/">
             Back
           </NavLink>
-          <span>Avatar Creation</span>
+          {/* Avatar Creation */}
+          {/* </span> */}
           <div className="radio-container">
             <input type="radio" name="avatar-circle" id="avatar-circle" />
             <label htmlFor="avatar-circle">Circle</label>
@@ -205,87 +259,154 @@ export class AvatarCreate extends React.Component {
         {/* <div className="avatar-image">
         </div> */}
         <div className="avatar-options">
-          <input
+          {/* <input
             type="text"
             name="avatar-name"
             id="avatar-name"
             placeholder="Avatar Name (no personal info pls)"
             onChange={this.setAvatarName}
-          />
+          /> */}
           {/* <button onClick={this.setAvatarName} value="SUBMIT">SUBMIT</button> */}
-          <select name="top" id="av-top">
+          <select
+            name="topType"
+            id="av-top"
+            multiple={false}
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Top</option> */}
             {this.state.top.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="accessories" id="av-accessories">
+          <select
+            name="accessoriesType"
+            id="av-accessories"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Accessories</option> */}
             {this.state.accessories.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="hat-color" id="av-hat-color">
+          <select
+            name="hatColor"
+            id="av-hat-color"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Hat Color</option> */}
             {this.state.hatColor.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="facial-hair" id="av-facial-hair">
+          <select
+            name="facialHairType"
+            id="av-facial-hair"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Facial Hair</option> */}
             {this.state.facialHair.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="facial-hair-color" id="av-facial-hair-color">
+          <select
+            name="facialHairColor"
+            id="av-facial-hair-color"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Hair Color</option> */}
             {this.state.facialHairColor.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="clothes" id="av-clothes">
+          <select
+            name="clotheType"
+            id="av-clothes"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Clothes</option> */}
             {this.state.clothes.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="fabric-color" id="av-fabric-color">
+          <select
+            name="clotheColor"
+            id="av-fabric-color"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Fabric Color</option> */}
             {this.state.fabricColor.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="eyes" id="av-eyes">
+          <select
+            name="eyeType"
+            id="av-eyes"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Eyes</option> */}
             {this.state.eyes.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="eyebrow" id="av-eyebrow">
+          <select
+            name="eyebrowType"
+            id="av-eyebrow"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Eyebrow</option> */}
             {this.state.eyebrow.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="mouth" id="av-mouth">
+          <select
+            name="mouthType"
+            id="av-mouth"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Mouth</option> */}
             {this.state.mouth.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}
           </select>
-          <select name="skin" id="av-skin">
+          <select
+            name="skinColor"
+            id="av-skin"
+            value={this.state.value}
+            onChange={this.updateAvatar}
+          >
+            {/* <option value="selected">Skin</option> */}
             {this.state.skin.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} multiple={true} value={[option]}>
                 {option}
               </option>
             ))}

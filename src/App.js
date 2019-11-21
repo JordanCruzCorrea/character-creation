@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Nav />
       <main>
-        <div class="container">
+        <div className="container">
           <Switch>
             <Route exact path="/" component={CharacterCreate} />
             <Route exact path="/avatar-create" component={AvatarCreate} />

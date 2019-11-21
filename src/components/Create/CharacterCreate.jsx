@@ -58,51 +58,57 @@ export class CharacterCreate extends React.Component {
           <input
             onChange={this.handleChange}
             value={this.state.name}
-            placeholder="Name"
+            placeholder="&#xf007; Name"
             type="text"
             name="name"
             id="input-name"
+            style={{ fontFamily: "masonregular, FontAwesome" }}
           />
           <input
             onChange={this.handleChange}
             value={this.state.aliases}
-            placeholder="Aliases"
+            placeholder="&#xf21b; Aliases"
             type="text"
             name="aliases"
             id="input-aliases"
+            style={{ fontFamily: "masonregular, FontAwesome" }}
           />
           <input
             onChange={this.handleChange}
             value={this.state.titles}
-            placeholder="Titles"
+            placeholder="&#xf508; Titles"
             type="text"
             name="titles"
             id="input-titles"
+            style={{ fontFamily: "masonregular, FontAwesome" }}
           />
           <input
             onChange={this.handleChange}
             value={this.state.culture}
-            placeholder="Culture"
+            placeholder="&#xf57d; Culture"
             type="text"
             name="culture"
             id="input-culture"
+            style={{ fontFamily: "masonregular, FontAwesome" }}
           />
           <input
             onChange={this.handleChange}
             value={this.state.allegiances}
-            placeholder="Allegiances"
+            placeholder="&#xf0c0; Allegiances"
             type="text"
             name="allegiances"
             id="input-allegiances"
+            style={{ fontFamily: "masonregular, FontAwesome" }}
           />
           <input
             type="submit"
             value="submit"
             onSubmit={this.handleSubmit}
-            label="submit"
+            label="&#xf2f6; submit"
+            style={{ fontFamily: "masonregular, FontAwesome" }}
           />
         </form>
-        {/* <button onClick={this.handleSubmit}>Submit</button> */}
+
         <NavLink exact to="/avatar-create">
           Avatar Creation
         </NavLink>
