@@ -53,7 +53,7 @@ export class CharacterCreate extends React.Component {
   render() {
     return (
       <div className="character-create">
-        <h2>Character Info</h2>
+        <h1>Character Info</h1>
         <form onSubmit={this.handleSubmit} method="POST">
           <input
             onChange={this.handleChange}
@@ -76,7 +76,7 @@ export class CharacterCreate extends React.Component {
           <input
             onChange={this.handleChange}
             value={this.state.titles}
-            placeholder="&#xf508; Titles"
+            placeholder="&#xf0b1; Titles"
             type="text"
             name="titles"
             id="input-titles"
@@ -85,7 +85,7 @@ export class CharacterCreate extends React.Component {
           <input
             onChange={this.handleChange}
             value={this.state.culture}
-            placeholder="&#xf57d; Culture"
+            placeholder="&#xf0ac; Culture"
             type="text"
             name="culture"
             id="input-culture"
