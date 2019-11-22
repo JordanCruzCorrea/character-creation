@@ -411,7 +411,7 @@ footer > * {
 
   .avatar-create-left img {
     width: 100%;
-    order: -1;
+    /* order: -1; */
   }
 
   .avatar-create-left span {

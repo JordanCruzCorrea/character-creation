@@ -4,7 +4,7 @@ Create a character with a customized avatar, enter your aliases, allegiances, ti
 
 Made with React and CSS. Also, love <3
 
-![Game of Thrones Creator GIF](https://imgur.com/plJXoTH.gif)
+![Game of Thrones Creator GIF](src/assets/demo.gif)
 
 ## Usage
 
