@@ -1,6 +1,6 @@
 import React from "react";
 
-import { displayCharacters } from "../../services/api";
+import { api } from "../../services/api";
 
 export class Browse extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export class Browse extends React.Component {
   }
 
   async componentDidMount() {
-    const displayChars = await displayCharacters
+    const displayChars = await api
       .get("/characters")
       .catch(e => console.error(e));
     console.log(displayChars);
@@ -29,12 +29,6 @@ export class Browse extends React.Component {
             <div key={index} className="character-display">
               <img src={character.avatar} alt="" />
               <h3 key={index}>{character.name}</h3>
-              <span>
-                <strong>Born:</strong> {character.born}
-              </span>
-              <span>
-                <strong>Died:</strong> {character.died ? character.died : "Not yet"}
-              </span>
               <span>
                 <strong>Titles:</strong> {character.titles}
               </span>

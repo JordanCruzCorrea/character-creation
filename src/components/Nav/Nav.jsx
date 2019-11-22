@@ -9,7 +9,7 @@ export function Nav() {
         <span style={{ fontFamily: "game_of_thronesregular" }}>
           GAME OF THRONES
         </span>
-        CHARACTER CREATION SUITE
+        CHARACTER CREATOR
       </h5>
       <div className="navLeft">
         <NavLink exact activeClassName="active" to="/">

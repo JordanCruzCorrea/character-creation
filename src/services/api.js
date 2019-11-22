@@ -7,7 +7,7 @@ import axios from "axios";
 // })
 
 // BROWSE
-export const displayCharacters = axios.create({
+export const api = axios.create({
   baseURL: "http://5dd1790315bbc2001448d20b.mockapi.io",
   responseType: "json"
 });

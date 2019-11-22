@@ -1,5 +1,6 @@
 :root {
-  --blue-color: #464c58;
+  --blue-color: rgb(51, 54, 56);
+  /* --blue-color: #464c58; */
   --parchment-color: #d6cca9;
 }
 
@@ -36,7 +37,6 @@ body {
   font-variant: small-caps;
   color: white;
   font-family: "game_of_thronesregular";
-  /* font-family: "game_of_thronesregular"; */
 }
 
 nav {
@@ -47,13 +47,11 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex: 0.45;
+  flex: 0.4;
   color: white;
   font-size: 1.2em;
   box-shadow: 15px 10px 40px #414141;
   border-radius: 0 0 5px 5px;
-  /* position: sticky; */
-  /* top: -10; */
 }
 
 nav h5 {
@@ -63,18 +61,14 @@ nav h5 {
 
 .navLeft {
   display: flex;
-  /* flex: .1; */
-  /* width: 50%; */
   justify-content: center;
   align-items: center;
-  /* position: sticky; */
-  /* top: 0; */
 }
 
 .active {
   font-size: 1.2em;
   color: white;
-  text-decoration: overline;
+  text-decoration: underline;
 }
 
 a {
@@ -96,20 +90,70 @@ main {
   display: flex;
   flex-direction: column;
   flex: 3;
-  margin-top: 5%;
   font-family: "masonregular";
+  animation: 2s ease-in 3s linear forwards fade-in;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+.splash-background {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(34, 34, 34, 0.966);
+  position: absolute;
+}
+
+.splash-foreground {
+  /* margin-top: 25%; */
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+  position: relative;
+  margin: 0 auto;
+}
+
+.splash-foreground img {
+  /* margin-top: 50%; */
+  z-index: 5;
+  width: 100%;
+  height: auto;
+  animation: ease-in-out;
+  animation-name: fade;
+  animation-duration: 5s;
+}
+
+@keyframes fade {
+  0% {
+    filter: opacity(10%);
+  }
+  50% {
+    filter: opacity(100%);
+  }
+  100% {
+    filter: opacity(60%);
+  }
 }
 
 .character-create {
   background-color: var(--blue-color);
   color: white;
   border: 1px solid white;
-  margin: 4% 10%;
+  margin: 5% 7%;
+  margin-bottom: 0;
   padding: 3%;
   display: flex;
-  flex: 0.8;
+  flex: 0.5;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
   border-radius: 10px;
 }
@@ -132,7 +176,6 @@ main a {
   font-size: 1.3em;
   color: white;
   text-decoration: overline;
-  /* text-decoration: underline; */
 }
 
 .avatar-create {
@@ -149,31 +192,32 @@ main a {
   align-items: center;
 }
 
+.avatar-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .avatar-create-left {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  list-style-type: none;
 }
 
 .avatar-create a {
   font-size: 1.1em;
 }
 
-.avatar-create input[type="text"] {
-  font-size: 1em;
-}
-
-.radio-container {
-  display: flex;
-  justify-content: flex-start;
-}
-
 select {
   color: black;
   background-color: white;
-  margin: 3%;
+  margin: 3% 0;
   padding: 1%;
   font-size: 1em;
   font-family: "masonregular";
+  width: 100%;
 }
 
 .avatar-options {
@@ -181,9 +225,24 @@ select {
   flex-direction: column;
 }
 
+.avatar-options > * {
+  display: flex;
+  flex-direction: column;
+}
+
+.av-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.av-div {
+  text-align: right;
+}
+
 .character-display {
   background-color: var(--blue-color);
-  /* margin: 5% 10%; */
   padding: 2%;
   display: flex;
   flex-flow: column nowrap;
@@ -260,20 +319,19 @@ footer > * {
   }
 
   nav {
-    position: fixed;
     width: 100%;
-    flex: 0.3;
+    flex: 0.1;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 2%;
   }
 
   .navLeft {
     order: -1;
+    margin: 2%;
   }
 
   .navRight {
-    margin-right: 5%;
+    margin: 2%;
     text-align: right;
   }
 
@@ -282,9 +340,7 @@ footer > * {
     justify-content: flex-start;
     align-items: center;
     flex: 2;
-    /* overflow-x: scroll; */
     margin: 0;
-    /* margin: 0 3%; */
   }
 
   .container {
@@ -292,11 +348,21 @@ footer > * {
     justify-content: center;
     align-items: center;
     flex: 1;
-    /* margin: 0 auto; */
+  }
+
+  .splash-foreground img {
+    margin-top: 0%;
+    width: 50%;
+    height: auto;
+  }
+
+  .creation-container {
+    display: flex;
+    width: 100%;
   }
 
   .character-create {
-    margin: 10%;
+    margin: 3%;
   }
 
   .character-create form {
@@ -307,28 +373,38 @@ footer > * {
   }
 
   .character-create input[type="text"] {
-    /* margin: 5% auto; */
-    /* width: 100%; */
     border-radius: 5px;
     justify-content: center;
     align-items: center;
   }
 
   .avatar-create {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    margin: 10% 7%;
+    display: flex;
+    flex: 0.8 1;
+    align-items: center;
+    justify-content: center;
+    margin: 3%;
     height: auto;
+    padding: 0;
+  }
+
+  .avatar-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2%;
+  }
+
+  .avatar-container > * {
+    width: 100%;
   }
 
   .avatar-create-left {
-    justify-content: space-between;
     flex: 0.7;
   }
 
   .avatar-create-left img {
-    /* flex-direction: column; */
     width: 100%;
     order: -1;
   }
@@ -343,55 +419,47 @@ footer > * {
     order: -2;
   }
 
-  .radio-container {
-    justify-content: space-evenly;
-  }
-
   .avatar-options {
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex: 0.5;
   }
 
-  .avatar-options form > * {
+  .avatar-options form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
   }
 
   .avatar-options select {
-    width: 100px;
+    width: 90%;
   }
 
   .character-container {
     display: flex;
     flex: 1;
-    margin: 5% auto;
+    margin: 0 auto;
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
 
   .character-display {
-    margin: 8% 1%;
-    /* flex: .5; */
+    margin: 2%;
     margin-bottom: 0;
     width: 350px;
-    /* min-width: 300px; */
-    /* max-width: 400px; */
     height: auto;
     align-items: center;
     justify-content: center;
   }
 
   footer {
-    /* position: fixed; */
     width: 100%;
     flex-direction: row;
     flex: 0.1;
-    /* bottom: 0; */
   }
 
   footer > * {
