@@ -169,7 +169,12 @@ main {
   margin: 2% 0;
   width: 90%;
   padding: 2%;
-  font-size: 1em;
+  font-size: 1.1em;
+}
+
+.character-create input[type="submit"] {
+  font-family: 'masonregular';
+  font-size: 1.3em;
 }
 
 main a {
@@ -215,7 +220,7 @@ select {
   background-color: white;
   margin: 3% 0;
   padding: 1%;
-  font-size: 1em;
+  font-size: 1.2em;
   font-family: "masonregular";
   width: 100%;
 }
