@@ -11,11 +11,13 @@ export class Create extends Component {
       avatar: "https://avataaars.io/?",
       options: {
         topType: "NoHair",
+        hairColor: "Auburn",
         accessoriesType: "Blank",
         hatColor: "Black",
         facialHairType: "Blank",
         facialHairColor: "Auburn",
         clotheType: "BlazerShirt",
+        graphicType: "Bat",
         clotheColor: "Black",
         eyeType: "Close",
         eyebrowType: "Angry",
@@ -29,7 +31,7 @@ export class Create extends Component {
         "WinterHat1",
         "WinterHat2",
         "WinterHat4",
-        "LongHairBig Hair",
+        "LongHairBigHair",
         "LongHairBob",
         "LongHairCurly",
         "LongHairCurvy",
@@ -130,7 +132,7 @@ export class Create extends Component {
         "Red",
         "White"
       ],
-      graphic: [
+      graphicType: [
         "Bat",
         "Cumbia",
         "Deer",
@@ -287,23 +289,7 @@ export class Create extends Component {
         <div className="avatar-create">
           <div className="avatar-container">
             <div className="avatar-create-left">
-              <h2>
-                Customize your avatar (almost) to your heart's content! <br/> Please
-                note these restrictions:
-              </h2>
-              <p>
-                <li>
-                  If your top is an eyepatch, you won't be able to set
-                  accessories.
-                </li>
-                <li>
-                  If your top is a hijab, you won't be able to set facial hair.
-                </li>
-                <li>
-                  If your clothes are BlazerSweater or BlazerShirt, you won't be able
-                  to change colors.
-                </li>
-              </p>
+              <h2>Customize your avatar to your heart's content!</h2>
               <img src={this.state.avatar} alt="avatar" />
             </div>
 
@@ -326,68 +312,108 @@ export class Create extends Component {
                   </select>
                 </div>
 
-                <div className="av-div">
-                  <label htmlFor="av-accessories">Accessories</label>
-                  <select
-                    name="accessoriesType"
-                    id="av-accessories"
-                    value={this.state.options.accessoriesType}
-                    onChange={this.updateAvatar}
-                  >
-                    {this.state.accessories.map((option, index) => (
-                      <option key={index} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="av-div">
-                  <label htmlFor="av-hat-color">Hat Color</label>
-                  <select
-                    name="hatColor"
-                    id="av-hat-color"
-                    value={this.state.options.hatColor}
-                    onChange={this.updateAvatar}
-                  >
-                    {this.state.hatColor.map((option, index) => (
-                      <option key={index} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="av-div">
-                  <label htmlFor="av-facial-hair">Facial Hair</label>
-                  <select
-                    name="facialHairType"
-                    id="av-facial-hair"
-                    value={this.state.options.facialHairType}
-                    onChange={this.updateAvatar}
-                  >
-                    {this.state.facialHair.map((option, index) => (
-                      <option key={index} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="av-div">
-                  <label htmlFor="av-facial-hair-color">
-                    Facial Hair Color
-                  </label>
-                  <select
-                    name="facialHairColor"
-                    id="av-facial-hair-color"
-                    value={this.state.options.facialHairColor}
-                    onChange={this.updateAvatar}
-                  >
-                    {this.state.facialHairColor.map((option, index) => (
-                      <option key={index} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                {this.state.options.topType === "NoHair" ? (
+                  ""
+                ) : (
+                  <div className="av-div">
+                    <label htmlFor="av-hair-color">Hair Color</label>
+                    <select
+                      name="hairColor"
+                      id="av-hair-color"
+                      value={this.state.options.hairColor}
+                      onChange={this.updateAvatar}
+                    >
+                      {this.state.hairColor.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+                {this.state.options.topType.includes("Hat") ? (
+                  <div className="av-div">
+                    <label htmlFor="av-hat-color">Hat Color</label>
+                    <select
+                      name="hatColor"
+                      id="av-hat-color"
+                      value={this.state.options.hatColor}
+                      onChange={this.updateAvatar}
+                    >
+                      {this.state.hatColor.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                {this.state.options.topType === "Eyepatch" ? (
+                  ""
+                ) : (
+                  <div className="av-div">
+                    <label htmlFor="av-accessories">Accessories</label>
+                    <select
+                      name="accessoriesType"
+                      id="av-accessories"
+                      value={this.state.options.accessoriesType}
+                      onChange={this.updateAvatar}
+                    >
+                      {this.state.accessories.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+                {this.state.options.topType === "Hijab" ? (
+                  ""
+                ) : (
+                  <div className="av-div">
+                    <label htmlFor="av-facial-hair">Facial Hair</label>
+                    <select
+                      name="facialHairType"
+                      id="av-facial-hair"
+                      value={this.state.options.facialHairType}
+                      onChange={this.updateAvatar}
+                    >
+                      {this.state.facialHair.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+                {this.state.options.facialHairType === "Blank" ? (
+                  ""
+                ) : (
+                  <div className="av-div">
+                    <label htmlFor="av-facial-hair-color">
+                      Facial Hair Color
+                    </label>
+                    <select
+                      name="facialHairColor"
+                      id="av-facial-hair-color"
+                      value={this.state.options.facialHairColor}
+                      onChange={this.updateAvatar}
+                    >
+                      {this.state.facialHairColor.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
                 <div className="av-div">
                   <label htmlFor="av-clothes">Clothes</label>
                   <select
@@ -403,6 +429,27 @@ export class Create extends Component {
                     ))}
                   </select>
                 </div>
+
+                {this.state.options.clotheType === "GraphicShirt" ? (
+                  <div className="av-div">
+                    <label htmlFor="av-graphic">Graphic</label>
+                    <select
+                      name="graphicType"
+                      id="av-graphic"
+                      value={this.state.options.graphicType}
+                      onChange={this.updateAvatar}
+                    >
+                      {this.state.graphicType.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                ) : (
+                  ""
+                )}
+
                 <div className="av-div">
                   <label htmlFor="av-fabric-color">Fabric Color</label>
                   <select
@@ -482,6 +529,7 @@ export class Create extends Component {
             </div>
           </div>
         </div>
+
         {/* TODO: CHAR CREATE */}
         <div className="character-create">
           <h2>Character Info</h2>

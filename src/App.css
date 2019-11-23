@@ -240,10 +240,11 @@ select {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  text-align: right;
 }
 
-.av-div {
-  text-align: right;
+.av-div label {
+  font-size: 1.4em;
 }
 
 .character-display {
@@ -422,6 +423,10 @@ footer > * {
 
   .avatar-create-left a {
     order: -2;
+  }
+
+  .avatar-create-left p {
+    font-size: 1.3em;
   }
 
   .avatar-options {
