@@ -23,5 +23,5 @@ This comes from the avatar library side, certain options are incompatible with o
 
 ## Credits
 
-- [MockAPI](https://mockapi.com): Used to host character data
+- [MockAPI](https://mockapi.io): Used to host character data
 - [Avataaars](https://avataaars.com): Avatar library
