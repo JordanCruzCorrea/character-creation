@@ -24,6 +24,94 @@ export class Create extends Component {
         mouthType: "Concerned",
         skinColor: "Tanned"
       },
+      name: "",
+      culture: "",
+      aliases: [],
+      titles: [],
+      allegiances: []
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.displayAvatar = this.displayAvatar.bind(this);
+    this.updateAvatar = this.updateAvatar.bind(this);
+  }
+
+  componentDidMount() {
+    this.displayAvatar();
+  }
+
+  // TODO: CHAR INFO FUNCTIONS
+  handleChange = e => {
+    const name = e.target.name;
+    const culture = e.target.culture;
+    const aliases = e.target.aliases;
+    const titles = e.target.titles;
+    const allegiances = e.target.allegiances;
+
+    this.setState({
+      [name]: e.target.value,
+      [culture]: e.target.value,
+      [aliases]: [e.target.value],
+      [titles]: [e.target.value],
+      [allegiances]: [e.target.value]
+    });
+  };
+
+  handleSubmit = async e => {
+    e.preventDefault();
+    await api
+      .post("/characters", {
+        name: this.state.name,
+        culture: this.state.culture,
+        aliases: [this.state.aliases],
+        titles: [this.state.titles],
+        allegiances: [this.state.allegiances],
+        avatar: this.state.avatar
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(e => console.error(e));
+
+    this.props.history.push("/browse");
+  };
+
+  // TODO: AV CREATE FUNCTIONS
+  async displayAvatar() {
+    const keys = Object.keys(this.state.options);
+    const values = Object.values(this.state.options);
+    const keyValue = keys.map((e, i) => e + "=" + values[i] + "&");
+    const joined = keyValue.join("");
+
+    this.setState({
+      avatar: this.state.avatar + joined
+    });
+
+    console.log("displayAv is go");
+    console.log("DA avatar:", this.state.avatar + joined);
+  }
+
+  async updateAvatar(e) {
+    const target = e.target;
+    const { name, value } = target;
+    const { options } = { ...this.state };
+    const currentState = options;
+
+    currentState[name] = value;
+
+    this.setState({
+      options: currentState,
+      avatar: this.state.avatar.replace([name], `${[name]}=${value}&`)
+    });
+    console.log("avatar updateAv:", this.state.avatar);
+    console.log("options updateAv: ", this.state.options);
+    // this.displayAvatar()
+  }
+
+  render() {
+    let values = {
       top: [
         "NoHair",
         "Eyepatch",
@@ -187,102 +275,9 @@ export class Create extends Component {
         "Twinkle",
         "Vomit"
       ],
-      skin: [
-        "Tanned",
-        "Yellow",
-        "Pale",
-        "Light",
-        "Brown",
-        "DarkBrown",
-        "Black"
-      ],
-      name: "",
-      culture: "",
-      aliases: [],
-      titles: [],
-      allegiances: []
+      skin: ["Tanned", "Yellow", "Pale", "Light", "Brown", "DarkBrown", "Black"]
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
-    this.displayAvatar = this.displayAvatar.bind(this);
-    this.updateAvatar = this.updateAvatar.bind(this);
-  }
-
-  componentDidMount() {
-    this.displayAvatar();
-  }
-
-  // TODO: CHAR INFO FUNCTIONS
-  handleChange = e => {
-    const name = e.target.name;
-    const culture = e.target.culture;
-    const aliases = e.target.aliases;
-    const titles = e.target.titles;
-    const allegiances = e.target.allegiances;
-
-    this.setState({
-      [name]: e.target.value,
-      [culture]: e.target.value,
-      [aliases]: [e.target.value],
-      [titles]: [e.target.value],
-      [allegiances]: [e.target.value]
-    });
-  };
-
-  handleSubmit = async e => {
-    e.preventDefault();
-    await api
-      .post("/characters", {
-        name: this.state.name,
-        culture: this.state.culture,
-        aliases: [this.state.aliases],
-        titles: [this.state.titles],
-        allegiances: [this.state.allegiances],
-        avatar: this.state.avatar
-      })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(e => console.error(e));
-
-    this.props.history.push("/browse");
-  };
-
-  // TODO: AV CREATE FUNCTIONS
-  async displayAvatar() {
-    const keys = Object.keys(this.state.options);
-    const values = Object.values(this.state.options);
-    const keyValue = keys.map((e, i) => e + "=" + values[i] + "&");
-    const joined = keyValue.join("");
-
-    this.setState({
-      avatar: this.state.avatar + joined
-    });
-
-    console.log("displayAv is go");
-    console.log("DA avatar:", this.state.avatar + joined);
-  }
-
-  async updateAvatar(e) {
-    const target = e.target;
-    const { name, value } = target;
-    const { options } = { ...this.state };
-    const currentState = options;
-
-    currentState[name] = value;
-
-    this.setState({
-      options: currentState,
-      avatar: this.state.avatar.replace([name], `${[name]}=${value}&`)
-    });
-    console.log("avatar updateAv:", this.state.avatar);
-    console.log("options updateAv: ", this.state.options);
-    // this.displayAvatar()
-  }
-
-  render() {
     return (
       <div className="creation-container">
         {/* TODO: AVATAR CREATE */}
@@ -304,7 +299,7 @@ export class Create extends Component {
                     value={this.state.options.topType}
                     onChange={this.updateAvatar}
                   >
-                    {this.state.top.map((option, index) => (
+                    {values.top.map((option, index) => (
                       <option key={index} value={option}>
                         {option}
                       </option>
@@ -312,7 +307,7 @@ export class Create extends Component {
                   </select>
                 </div>
 
-                {this.state.options.topType === "NoHair" ? (
+                {this.state.options.topType === "NoHair" || "Hijab" ? (
                   ""
                 ) : (
                   <div className="av-div">
@@ -323,7 +318,7 @@ export class Create extends Component {
                       value={this.state.options.hairColor}
                       onChange={this.updateAvatar}
                     >
-                      {this.state.hairColor.map((option, index) => (
+                      {values.hairColor.map((option, index) => (
                         <option key={index} value={option}>
                           {option}
                         </option>
@@ -341,7 +336,7 @@ export class Create extends Component {
                       value={this.state.options.hatColor}
                       onChange={this.updateAvatar}
                     >
-                      {this.state.hatColor.map((option, index) => (
+                      {values.hatColor.map((option, index) => (
                         <option key={index} value={option}>
                           {option}
                         </option>
@@ -363,7 +358,7 @@ export class Create extends Component {
                       value={this.state.options.accessoriesType}
                       onChange={this.updateAvatar}
                     >
-                      {this.state.accessories.map((option, index) => (
+                      {values.accessories.map((option, index) => (
                         <option key={index} value={option}>
                           {option}
                         </option>
@@ -383,7 +378,7 @@ export class Create extends Component {
                       value={this.state.options.facialHairType}
                       onChange={this.updateAvatar}
                     >
-                      {this.state.facialHair.map((option, index) => (
+                      {values.facialHair.map((option, index) => (
                         <option key={index} value={option}>
                           {option}
                         </option>
@@ -405,7 +400,7 @@ export class Create extends Component {
                       value={this.state.options.facialHairColor}
                       onChange={this.updateAvatar}
                     >
-                      {this.state.facialHairColor.map((option, index) => (
+                      {values.facialHairColor.map((option, index) => (
                         <option key={index} value={option}>
                           {option}
                         </option>
@@ -422,7 +417,7 @@ export class Create extends Component {
                     value={this.state.options.clotheType}
                     onChange={this.updateAvatar}
                   >
-                    {this.state.clothes.map((option, index) => (
+                    {values.clothes.map((option, index) => (
                       <option key={index} value={option}>
                         {option}
                       </option>
@@ -439,7 +434,7 @@ export class Create extends Component {
                       value={this.state.options.graphicType}
                       onChange={this.updateAvatar}
                     >
-                      {this.state.graphicType.map((option, index) => (
+                      {values.graphicType.map((option, index) => (
                         <option key={index} value={option}>
                           {option}
                         </option>
@@ -450,21 +445,27 @@ export class Create extends Component {
                   ""
                 )}
 
-                <div className="av-div">
-                  <label htmlFor="av-fabric-color">Fabric Color</label>
-                  <select
-                    name="clotheColor"
-                    id="av-fabric-color"
-                    value={this.state.options.clotheColor}
-                    onChange={this.updateAvatar}
-                  >
-                    {this.state.fabricColor.map((option, index) => (
-                      <option key={index} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                {this.state.options.clotheType === "BlazerShirt" ||
+                this.state.options.clotheType === "BlazerSweater" ? (
+                  ""
+                ) : (
+                  <div className="av-div">
+                    <label htmlFor="av-fabric-color">Fabric Color</label>
+                    <select
+                      name="clotheColor"
+                      id="av-fabric-color"
+                      value={this.state.options.clotheColor}
+                      onChange={this.updateAvatar}
+                    >
+                      {values.fabricColor.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
                 <div className="av-div">
                   <label htmlFor="av-eyes">Eyes</label>
                   <select
@@ -473,13 +474,14 @@ export class Create extends Component {
                     value={this.state.options.eyeType}
                     onChange={this.updateAvatar}
                   >
-                    {this.state.eyes.map((option, index) => (
+                    {values.eyes.map((option, index) => (
                       <option key={index} value={option}>
                         {option}
                       </option>
                     ))}
                   </select>
                 </div>
+
                 <div className="av-div">
                   <label htmlFor="av-eyebrow">Eyebrow</label>
                   <select
@@ -488,13 +490,14 @@ export class Create extends Component {
                     value={this.state.options.eyebrowType}
                     onChange={this.updateAvatar}
                   >
-                    {this.state.eyebrow.map((option, index) => (
+                    {values.eyebrow.map((option, index) => (
                       <option key={index} value={option}>
                         {option}
                       </option>
                     ))}
                   </select>
                 </div>
+
                 <div className="av-div">
                   <label htmlFor="av-mouth">Mouth</label>
                   <select
@@ -503,13 +506,14 @@ export class Create extends Component {
                     value={this.state.options.mouthType}
                     onChange={this.updateAvatar}
                   >
-                    {this.state.mouth.map((option, index) => (
+                    {values.mouth.map((option, index) => (
                       <option key={index} value={option}>
                         {option}
                       </option>
                     ))}
                   </select>
                 </div>
+
                 <div className="av-div">
                   <label htmlFor="av-skin">Skin</label>
                   <select
@@ -518,7 +522,7 @@ export class Create extends Component {
                     value={this.state.options.skinColor}
                     onChange={this.updateAvatar}
                   >
-                    {this.state.skin.map((option, index) => (
+                    {values.skin.map((option, index) => (
                       <option key={index} value={option}>
                         {option}
                       </option>

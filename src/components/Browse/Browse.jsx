@@ -27,7 +27,8 @@ export class Browse extends React.Component {
         {this.state.characters.reverse().map((character, index) => {
           return (
             <div key={index} className="character-display">
-              <img src={character.avatar} alt="" />
+              <img src={character.avatar} alt="" />#{index + 1} of{" "}
+              {this.state.characters.length}
               <h3 key={index}>{character.name}</h3>
               <span>
                 <strong>Titles:</strong> {character.titles}

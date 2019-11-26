@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { Splash } from "../components/Splash/splash";
+// import { Splash } from "../components/Splash/splash";
 import { Browse } from "../components/Browse/Browse";
 import { Create } from "../components/Create/Create";
 
-function Content() {
+export function Content() {
   return (
     <main>
       <div className="container">
@@ -18,4 +18,4 @@ function Content() {
   );
 }
 
-export default Splash(Content);
+// export default Splash(Content);

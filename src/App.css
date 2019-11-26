@@ -288,6 +288,8 @@ footer {
   flex: 0.5;
   font-size: 1.2em;
   box-shadow: 5px 0px 15px #414141;
+  position: relative;
+  bottom: 0;
 }
 
 footer > * {

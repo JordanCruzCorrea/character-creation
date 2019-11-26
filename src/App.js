@@ -1,12 +1,14 @@
 import React from "react";
 
 import { Nav } from "./components/Nav/Nav";
+// import { Splash } from "./components/Splash/splash";
+import { Content } from "./screens/Content";
 import { Footer } from "./components/Footer/Footer";
 
 import "./App.css";
-import Content from "./screens/Content";
 
 export default function App() {
+  // function App() {
   return (
     <div className="App">
       <Nav />
@@ -15,3 +17,5 @@ export default function App() {
     </div>
   );
 }
+
+// export default Splash(App);
